@@ -15,7 +15,6 @@ def write_to_excel_internal(usn, ia1, ia2, ia3, ia4, ia5, ia6, ia7, ia8):
     work_sheet_internal.write(0, 6, "Data Communications")
     work_sheet_internal.write(0, 7, "Design and Analysis of Algorithms Laboratory")
     work_sheet_internal.write(0, 8, "Microprocessors Laboratory")
-    i = 1
     student = 0
     for i in range(1, 218):
         work_sheet_internal.write(i, 0, usn[student])
@@ -28,7 +27,6 @@ def write_to_excel_internal(usn, ia1, ia2, ia3, ia4, ia5, ia6, ia7, ia8):
         work_sheet_internal.write(i, 7, ia7[student])
         work_sheet_internal.write(i, 8, ia8[student])
         student += 1
-    work_book.close()
     return
 
 
@@ -42,7 +40,6 @@ def write_to_excel_external(usn, ea1, ea2, ea3, ea4, ea5, ea6, ea7, ea8):
     work_sheet_external.write(0, 6, "Data Communications")
     work_sheet_external.write(0, 7, "Design and Analysis of Algorithms Laboratory")
     work_sheet_external.write(0, 8, "Microprocessors Laboratory")
-    row = 1
     student = 0
     for row in range(1, 218):
         work_sheet_external.write(row, 0, usn[student])
@@ -55,7 +52,6 @@ def write_to_excel_external(usn, ea1, ea2, ea3, ea4, ea5, ea6, ea7, ea8):
         work_sheet_external.write(row, 7, ea7[student])
         work_sheet_external.write(row, 8, ea8[student])
         student += 1
-    work_book.close()
     return
 
 
@@ -69,7 +65,6 @@ def write_to_excel_total(usn, total1, total2, total3, total4, total5, total6, to
     work_sheet_total.write(0, 6, "Data Communications")
     work_sheet_total.write(0, 7, "Design and Analysis of Algorithms Laboratory")
     work_sheet_total.write(0, 8, "Microprocessors Laboratory")
-    row = 1
     student = 0
     for row in range(1, 218):
         work_sheet_total.write(row, 0, usn[student])
@@ -82,6 +77,8 @@ def write_to_excel_total(usn, total1, total2, total3, total4, total5, total6, to
         work_sheet_total.write(row, 7, total7[student])
         work_sheet_total.write(row, 8, total8[student])
         student += 1
-    work_book.close()
     return
 
+
+def close():
+    work_book.close()
