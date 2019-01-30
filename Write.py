@@ -15,18 +15,18 @@ def write_to_excel_internal(usn, ia1, ia2, ia3, ia4, ia5, ia6, ia7, ia8):
     work_sheet_internal.write(0, 6, "Data Communications")
     work_sheet_internal.write(0, 7, "Design and Analysis of Algorithms Laboratory")
     work_sheet_internal.write(0, 8, "Microprocessors Laboratory")
-    row = 1
+    i = 1
     student = 0
     for i in range(1, 218):
-        work_sheet_internal.write(row, 0, usn[student])
-        work_sheet_internal.write(row, 1, ia1[student])
-        work_sheet_internal.write(row, 2, ia2[student])
-        work_sheet_internal.write(row, 3, ia3[student])
-        work_sheet_internal.write(row, 4, ia4[student])
-        work_sheet_internal.write(row, 5, ia5[student])
-        work_sheet_internal.write(row, 6, ia6[student])
-        work_sheet_internal.write(row, 7, ia7[student])
-        work_sheet_internal.write(row, 8, ia8[student])
+        work_sheet_internal.write(i, 0, usn[student])
+        work_sheet_internal.write(i, 1, ia1[student])
+        work_sheet_internal.write(i, 2, ia2[student])
+        work_sheet_internal.write(i, 3, ia3[student])
+        work_sheet_internal.write(i, 4, ia4[student])
+        work_sheet_internal.write(i, 5, ia5[student])
+        work_sheet_internal.write(i, 6, ia6[student])
+        work_sheet_internal.write(i, 7, ia7[student])
+        work_sheet_internal.write(i, 8, ia8[student])
         student += 1
     work_book.close()
     return
