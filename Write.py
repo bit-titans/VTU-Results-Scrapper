@@ -44,7 +44,7 @@ def write_to_excel_external(usn, ea1, ea2, ea3, ea4, ea5, ea6, ea7, ea8):
     work_sheet_external.write(0, 8, "Microprocessors Laboratory")
     row = 1
     student = 0
-    for i in range(1, 218):
+    for row in range(1, 218):
         work_sheet_external.write(row, 0, usn[student])
         work_sheet_external.write(row, 1, ea1[student])
         work_sheet_external.write(row, 2, ea2[student])
@@ -71,7 +71,7 @@ def write_to_excel_total(usn, total1, total2, total3, total4, total5, total6, to
     work_sheet_total.write(0, 8, "Microprocessors Laboratory")
     row = 1
     student = 0
-    for i in range(1, 218):
+    for row in range(1, 218):
         work_sheet_total.write(row, 0, usn[student])
         work_sheet_total.write(row, 1, total1[student])
         work_sheet_total.write(row, 2, total2[student])
