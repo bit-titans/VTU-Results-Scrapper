@@ -2,7 +2,7 @@ import ocr
 from selenium import webdriver
 from PIL import Image
 import Write
-driver = webdriver.Chrome("C:\\Users\\akash\\Downloads\\chromedriver_win32\\chromedriver.exe")
+driver = webdriver.Chrome("C:\\Users\\akash\\Downloads\\chromedriver_win32\\chromedriver.exe") #Specify Path to chromedriver.exe from Selenium WebDriver
 i = 1
 usn_list = []
 ia1 = []
@@ -31,7 +31,7 @@ t7 = []
 t8 = []
 while i <= 217:
     try:
-        driver.get("http://results.vtu.ac.in/vitaviresultcbcs2018/index.php");
+        driver.get("http://results.vtu.ac.in/vitaviresultcbcs2018/index.php")
         usn = driver.find_element_by_name('lns')
         usn.send_keys("1BI16CS"+str(format(i, '03d')))
         print("Sent USN:-1BI16CS"+str(format(i, '03d')))
