@@ -28,6 +28,7 @@ def write_to_excel_internal(usn, ia1, ia2, ia3, ia4, ia5, ia6, ia7, ia8):
         work_sheet_internal.write(row, 7, ia7[student])
         work_sheet_internal.write(row, 8, ia8[student])
         student += 1
+    work_book.close()
     return
 
 
@@ -54,6 +55,7 @@ def write_to_excel_external(usn, ea1, ea2, ea3, ea4, ea5, ea6, ea7, ea8):
         work_sheet_external.write(row, 7, ea7[student])
         work_sheet_external.write(row, 8, ea8[student])
         student += 1
+    work_book.close()
     return
 
 
@@ -80,5 +82,6 @@ def write_to_excel_total(usn, total1, total2, total3, total4, total5, total6, to
         work_sheet_total.write(row, 7, total7[student])
         work_sheet_total.write(row, 8, total8[student])
         student += 1
+    work_book.close()
     return
 
