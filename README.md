@@ -1,4 +1,4 @@
-# VTU-Results-Scrapper
+# VTU-Results-Scrapper V2
 A python script to scrap VTU Results and store result in a workbook/spreadsheet
 
 
@@ -12,8 +12,8 @@ Dependencies and Libraries:-
 
 3) Pillow(PIL fork):-  pip install Pillow
 
-4) Selenium Google Chrome Webdriver:- https://sites.google.com/a/chromium.org/chromedriver/downloads
+4) Requests  
 
-5) Selenium Python Library:- pip install -U selenium
+5) lxml- pip install lxml
 
 6)XlsxWriter:- pip install XlsxWriter
