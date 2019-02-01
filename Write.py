@@ -1,8 +1,18 @@
 import xlsxwriter
+"""
+                                            Created by ABHISHEK KOUSHIK B N 
+                                                        AND
+                                                       AKASH R
+                                            on 01/02/2019
+ """
+
+
+
 work_book = xlsxwriter.Workbook("Results.xlsx")
 work_sheet_internal = work_book.add_worksheet("Internal Marks")
 work_sheet_external = work_book.add_worksheet("External Marks")
 work_sheet_total = work_book.add_worksheet("Total Marks")
+
 
 
 def write_to_excel_internal(usn, ia1, ia2, ia3, ia4, ia5, ia6, ia7, ia8):
