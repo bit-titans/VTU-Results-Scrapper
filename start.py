@@ -39,8 +39,8 @@ while i <= 217:
     s = requests.Session()
     headers = {'Referer': 'http://results.vtu.ac.in/vitaviresultcbcs2018/index.php',
                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36',
-                   'Upgrade-Insecure-Requests': '1'
-            , 'Connection': 'keep-alive', 'Cookie': 'PHPSESSID=u47uot7eg9j6eglqm951e3nfr7'}
+                   'Upgrade-Insecure-Requests': '1',  'Cookie': 'PHPSESSID=u47uot7eg9j6eglqm951e3nfr7'
+            , 'Connection': 'keep-alive'}
     image = s.get("http://results.vtu.ac.in/vitaviresultcbcs2018/captcha_new.php", headers=headers)
     with open("snap.png", 'wb') as file:
         file.write(image.content)
@@ -48,10 +48,9 @@ while i <= 217:
     USN = "1BI16CS"+str(format(i, '03d'))
     url = "http://results.vtu.ac.in/vitaviresultcbcs2018/resultpage.php"
     payload = {'lns': USN, 'captchacode': str(cap),
-                   'token': 'Nm1LeEQvWlNPRFR4Tk9BdmZ2VVNxa2V5T1B4ZTRLZ2JnazlDNmJ1S3lHVHlWZE5qVEJsTmI3Q2YvSzR5ekZaSW54MzNvSThqd2Z0QTRMYktvUGF6U3c9PTo6oF0AyQ1GXqfeBirZAX5GdA==',
+                   'token': 'YVY3aVVsT1F0dGNhalpxZFU1c0VuYjdsOER4VlRUay81alRYUUFucmRyekpHVWxaM2owby9PNGJYMlE2elREMUp6UkdOTk1IcXdQTnBVSkh4eFZiMGc9PTo67Sdlq3FpWDAYuCoX3rutjQ==',
                    'current_url': 'http://results.vtu.ac.in/vitaviresultcbcs2018/index.php'}
     page = s.post(url, data=payload, headers=headers)
-    #print(page.text)
     tree = html.fromstring(page.content)
     print("Sent USN:-1BI16CS"+str(format(i, '03d')))
     print("Sent Captcha:"+ocr.get_ocr("snap.png"))
@@ -60,6 +59,9 @@ while i <= 217:
         continue
     else:
         i += 1
+    if "Redirecting to VTU Results Site" in page.text:
+        print("Alert:-Token Expired!!:Update new token in Payload")
+        exit(2)
     if "University Seat Number is not available or Invalid..!" in page.text:
         ia1.insert(len(ia1), "-")
         ia2.insert(len(ia2), "-")
