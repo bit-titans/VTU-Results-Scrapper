@@ -48,9 +48,10 @@ while i <= 217:
     USN = "1BI16CS"+str(format(i, '03d'))
     url = "http://results.vtu.ac.in/vitaviresultcbcs2018/resultpage.php"
     payload = {'lns': USN, 'captchacode': str(cap),
-                   'token': 'aEVNVkN4Tko4M28xWjFyMzZSSjVhVlNQRjIxU0JGc1VCV05QOG4yMjc1UytXV0ZpU1V6YkNGUnlwRlMxM2tab1ppeTkvL2tiUmhaeU1YSVlzd2tjTWc9PTo67F7nLxrgAMpgqQ87SbLAmA==',
+                   'token': 'Nm1LeEQvWlNPRFR4Tk9BdmZ2VVNxa2V5T1B4ZTRLZ2JnazlDNmJ1S3lHVHlWZE5qVEJsTmI3Q2YvSzR5ekZaSW54MzNvSThqd2Z0QTRMYktvUGF6U3c9PTo6oF0AyQ1GXqfeBirZAX5GdA==',
                    'current_url': 'http://results.vtu.ac.in/vitaviresultcbcs2018/index.php'}
     page = s.post(url, data=payload, headers=headers)
+    #print(page.text)
     tree = html.fromstring(page.content)
     print("Sent USN:-1BI16CS"+str(format(i, '03d')))
     print("Sent Captcha:"+ocr.get_ocr("snap.png"))
