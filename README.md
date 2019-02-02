@@ -17,3 +17,11 @@ Dependencies and Libraries:-
 5) lxml- pip install lxml
 
 6)XlsxWriter:- pip install XlsxWriter
+
+Instructions:-
+
+1)Set path to Tesseract in ocr.py
+
+2)Update new token in payload of start.py in accordance to new token in VTU results page
+
+3)Execute start.py
