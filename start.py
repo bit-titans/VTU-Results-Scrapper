@@ -2,6 +2,7 @@ import requests
 from lxml import html
 import ocr
 import Write
+import WriteDB
 """
                                             Created by ABHISHEK KOUSHIK B N 
                                                         AND
@@ -34,7 +35,17 @@ t5 = []
 t6 = []
 t7 = []
 t8 = []
+r1 = []
+r2 = []
+r3 = []
+r4 = []
+r5 = []
+r6 = []
+r7 = []
+r8 = []
 i = 1
+name = []
+names = []
 while i <= 217:
     s = requests.Session()
     headers = {'Referer': 'http://results.vtu.ac.in/vitaviresultcbcs2018/index.php',
@@ -63,6 +74,7 @@ while i <= 217:
         print("Alert:-Token Expired!!:Update new token in Payload")
         exit(2)
     if "University Seat Number is not available or Invalid..!" in page.text:
+        print("University Seat Number is not available or Invalid..!")
         ia1.insert(len(ia1), "-")
         ia2.insert(len(ia2), "-")
         ia3.insert(len(ia3), "-")
@@ -87,7 +99,22 @@ while i <= 217:
         t6.insert(len(t6), "-")
         t7.insert(len(t7), "-")
         t8.insert(len(t8), "-")
+        r1.insert(len(r1), "-")
+        r2.insert(len(r2), "-")
+        r3.insert(len(r3), "-")
+        r4.insert(len(r4), "-")
+        r5.insert(len(r5), "-")
+        r6.insert(len(r6), "-")
+        r7.insert(len(r7), "-")
+        r8.insert(len(r8), "-")
+        names.insert(len(names), "USN does'nt Exist")
         continue
+    temp = page.text.find("Student Name")
+    name.clear()
+    while (page.text[temp + 91] != "<"):
+        name.insert(len(name), page.text[temp + 91])
+        temp += 1
+    names.insert(len(names), ''.join(name))
     if("Semester : 4" in page.text):
         imarks1 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div[1]/div/div/div[2]/div/div/div[2]/div/div[2]/div[3]')[0].text
         imarks2 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div[1]/div/div/div[2]/div/div[1]/div[2]/div/div[3]/div[3]')[0].text
@@ -113,6 +140,14 @@ while i <= 217:
         tmarks6 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div[1]/div/div/div[2]/div/div[1]/div[2]/div/div[7]/div[5]')[0].text
         tmarks7 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div[1]/div/div/div[2]/div/div[1]/div[2]/div/div[8]/div[5]')[0].text
         tmarks8 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div[1]/div/div/div[2]/div/div[1]/div[2]/div/div[9]/div[5]')[0].text
+        result1 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div[1]/div/div/div[2]/div/div[1]/div[2]/div/div[2]/div[6]')[0].text
+        result2 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div[1]/div/div/div[2]/div/div[1]/div[2]/div/div[3]/div[6]')[0].text
+        result3 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div[1]/div/div/div[2]/div/div[1]/div[2]/div/div[4]/div[6]')[0].text
+        result4 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div[1]/div/div/div[2]/div/div[1]/div[2]/div/div[5]/div[6]')[0].text
+        result5 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div[1]/div/div/div[2]/div/div[1]/div[2]/div/div[6]/div[6]')[0].text
+        result6 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div[1]/div/div/div[2]/div/div[1]/div[2]/div/div[7]/div[6]')[0].text
+        result7 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div[1]/div/div/div[2]/div/div[1]/div[2]/div/div[8]/div[6]')[0].text
+        result8 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div[1]/div/div/div[2]/div/div[1]/div[2]/div/div[9]/div[6]')[0].text
         ia1.insert(len(ia1), imarks1)
         ia2.insert(len(ia2), imarks2)
         ia3.insert(len(ia3), imarks3)
@@ -137,6 +172,14 @@ while i <= 217:
         t6.insert(len(t6), tmarks6)
         t7.insert(len(t7), tmarks7)
         t8.insert(len(t8), tmarks8)
+        r1.insert(len(r1), result1)
+        r2.insert(len(r2), result2)
+        r3.insert(len(r3), result3)
+        r4.insert(len(r4), result4)
+        r5.insert(len(r5), result5)
+        r6.insert(len(r6), result6)
+        r7.insert(len(r7), result7)
+        r8.insert(len(r8), result8)
     else:
         ia1.insert(len(ia1), "-")
         ia2.insert(len(ia2), "-")
@@ -162,33 +205,57 @@ while i <= 217:
         t6.insert(len(t6), "-")
         t7.insert(len(t7), "-")
         t8.insert(len(t8), "-")
-print(len(ia1))
-print(len(ia2))
-print(len(ia3))
-print(len(ia4))
-print(len(ia5))
-print(len(ia6))
-print(len(ia7))
-print(len(ia8))
-print(len(ea1))
-print(len(ea2))
-print(len(ea3))
-print(len(ea4))
-print(len(ea5))
-print(len(ea6))
-print(len(ea7))
-print(len(ea8))
-print(len(t1))
-print(len(t2))
-print(len(t3))
-print(len(t4))
-print(len(t5))
-print(len(t6))
-print(len(t7))
-print(len(t8))
+        r1.insert(len(r1), "-")
+        r2.insert(len(r2), "-")
+        r3.insert(len(r3), "-")
+        r4.insert(len(r4), "-")
+        r5.insert(len(r5), "-")
+        r6.insert(len(r6), "-")
+        r7.insert(len(r7), "-")
+        r8.insert(len(r8), "-")
 for i in range(1, 218):
     usn_list.insert(len(usn_list), "1BI16CS"+str(format(i, '03d')))
-Write.write_to_excel_internal(usn_list, ia1, ia2, ia3, ia4, ia5, ia6, ia7, ia8)
-Write.write_to_excel_external(usn_list, ea1, ea2, ea3, ea4, ea5, ea6, ea7, ea8)
-Write.write_to_excel_total(usn_list, t1, t2, t3, t4, t5, t6, t7, t8)
-Write.close()
+done = 0
+while done==0 :
+    print("WRITE:-")
+    print("Menu:-\n 1)Write to Spreadsheet\n 2)Write to Database\n 3)Both\n 4)Exit")
+    choice = int(input("Enter your choice:-"))
+    if choice == 1:
+            Write.write_to_excel_internal(usn_list, names, ia1, ia2, ia3, ia4, ia5, ia6, ia7, ia8)
+            Write.write_to_excel_external(usn_list, names, ea1, ea2, ea3, ea4, ea5, ea6, ea7, ea8)
+            Write.write_to_excel_total(usn_list,names, t1, t2, t3, t4, t5, t6, t7, t8)
+            Write.write_to_excel_result(usn_list,names, r1, r2, r3, r4, r5, r6, r7, r8)
+            print("Write Finished")
+    elif choice == 2:
+        try:
+            WriteDB.drop_tables()
+        except:
+            pass
+        WriteDB.create_tables()
+        WriteDB.write_internal(usn_list, names, ia1, ia2, ia3, ia4, ia5, ia6, ia7, ia8)
+        WriteDB.write_external(usn_list, names, ea1, ea2, ea3, ea4, ea5, ea6, ea7, ea8)
+        WriteDB.write_total(usn_list, names, t1, t2, t3, t4, t5, t6, t7, t8)
+        WriteDB.write_results(usn_list, names, r1, r2, r3, r4, r5, r6, r7, r8)
+        print("Write Finished")
+    elif choice == 3:
+        Write.write_to_excel_internal(usn_list, names, ia1, ia2, ia3, ia4, ia5, ia6, ia7, ia8)
+        Write.write_to_excel_external(usn_list, names, ea1, ea2, ea3, ea4, ea5, ea6, ea7, ea8)
+        Write.write_to_excel_total(usn_list, names, t1, t2, t3, t4, t5, t6, t7, t8)
+        Write.write_to_excel_result(usn_list, names, r1, r2, r3, r4, r5, r6, r7, r8)
+        try:
+            WriteDB.drop_tables()
+        except:
+            pass
+        WriteDB.create_tables()
+        WriteDB.write_internal(usn_list, names, ia1, ia2, ia3, ia4, ia5, ia6, ia7, ia8)
+        WriteDB.write_external(usn_list, names, ea1, ea2, ea3, ea4, ea5, ea6, ea7, ea8)
+        WriteDB.write_total(usn_list, names, t1, t2, t3, t4, t5, t6, t7, t8)
+        WriteDB.write_results(usn_list, names, r1, r2, r3, r4, r5, r6, r7, r8)
+        print("Write Finished")
+    elif choice == 4:
+        done = 1
+        Write.close()
+        WriteDB.end_connection()
+        exit(0)
+    else:
+        print("Invalid Choice")
