@@ -1,5 +1,5 @@
-# VTU-Results-Scrapper V2
-A python script to scrap VTU Results and store result in a workbook/spreadsheet
+# VTU-Results-Scrapper V3
+A python script to scrap VTU Results and store result in a workbook/spreadsheet or a Database
 
 
 
