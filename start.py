@@ -111,8 +111,8 @@ while i <= 217:
         continue
     temp = page.text.find("Student Name")
     name.clear()
-    while (page.text[temp + 91] != "<"):
-        name.insert(len(name), page.text[temp + 91])
+    while (page.text[temp + 60] != "<"):
+        name.insert(len(name), page.text[temp + 60])
         temp += 1
     names.insert(len(names), ''.join(name))
     if("Semester : 5" in page.text):
