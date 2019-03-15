@@ -148,7 +148,6 @@ while i <= 217:
         result6 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div[1]/div/div/div[2]/div/div[1]/div[2]/div/div[7]/div[6]')[0].text
         result7 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div[1]/div/div/div[2]/div/div[1]/div[2]/div/div[8]/div[6]')[0].text
         result8 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div[1]/div/div/div[2]/div/div[1]/div[2]/div/div[9]/div[6]')[0].text
-        print(imarks1)
         ia1.insert(len(ia1), imarks1)
         ia2.insert(len(ia2), imarks2)
         ia3.insert(len(ia3), imarks3)

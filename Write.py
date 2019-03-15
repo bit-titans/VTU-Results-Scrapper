@@ -34,6 +34,8 @@ def write_to_excel(usn, name, ia1, ia2, ia3, ia4, ia5, ia6, ia7, ia8, ea1, ea2, 
     length = len(ia1)
     row = 2
     for i in range(0,length):
+        worksheet.write(row, 0, usn[i])
+        worksheet.write(row, 1, name[i])
         worksheet.write(row, 2, ia1[i])
         worksheet.write(row, 3, ea1[i])
         worksheet.write(row, 4, total1[i])
