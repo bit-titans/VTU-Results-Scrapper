@@ -56,7 +56,7 @@ while i <= 217:
     with open("snap.png", 'wb') as file:
         file.write(image.content)
     cap = ocr.get_ocr("snap.png")
-    USN = "1BI16CS"+str(format(i, '03d'))
+    USN = "1BI15CS"+str(format(i, '03d'))
     url = "http://results.vtu.ac.in/resultsvitavicbcs_19/resultpage.php"
     payload = {'lns': USN, 'captchacode': str(cap),
                    'token': 'V0d4K0I0T0VGVlhwVU42Z1NxZVlKWkNoeWV5cXl3bVhiRFkwaXl4YTFtaldpQlc3UExiVTdPR1lReksrbmdNRC9YaUtZdG11L3dtK0txbHYwc1hRNWc9PTo6jWNH5WL62n8qlEs+C8/fog==',
@@ -115,7 +115,7 @@ while i <= 217:
         name.insert(len(name), page.text[temp + 61])
         temp += 1
     names.insert(len(names), ''.join(name))
-
+    print(names)
     if("Semester : 7" in page.text):
         imarks1 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div[1]/div/div/div[2]/div/div/div[2]/div/div[2]/div[3]')[0].text
         imarks2 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div[1]/div/div/div[2]/div/div[1]/div[2]/div/div[3]/div[3]')[0].text
