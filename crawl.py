@@ -59,6 +59,7 @@ sheet = wb.sheet_by_index(0)
 while True:
     try:
         USN = sheet.cell_value(i, 0)
+        batch = USN[3:5]
     except:
         break
     gpa = 0
@@ -138,7 +139,7 @@ while True:
         temp += 1
     names.insert(len(names), ''.join(name))
     if("Semester : 3" in page.text):
-        if "18" in USN:
+        if "18" in batch:
             print("Diploma Detected")
             imarksa = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div[1]/div/div/div[2]/div/div/div[2]/div/div[2]/div[3]')[0].text
             imarks1 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div[1]/div/div/div[2]/div/div[1]/div[2]/div/div[3]/div[3]')[0].text
