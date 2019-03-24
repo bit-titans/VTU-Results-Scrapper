@@ -73,7 +73,6 @@ while True:
         file.write(image.content)
     cap = ocr.get_ocr("snap.png")
     #USN = "1BI17CS"+str(format(i, '03d'))
-    usn_list.insert(len(usn_list), USN)
     url = "http://results.vtu.ac.in/resultsvitavicbcs_19/resultpage.php"
     payload = {'lns': USN, 'captchacode': str(cap),
                    'token': 'Sk4wTTJ6Y09wd0RVVm8wSVE5a2phUWxUT0VsejEzSFU0SWl1YkxHdi9Kc0pVQ3BrOE5SRUQwVTBVK1k2bGw2ZFdaWG16cW81bGIwaUxudUg4VEdUY3c9PTo6CcA6spgXA7a48DhwljbQLQ',
@@ -91,6 +90,7 @@ while True:
     if "Redirecting to VTU Results Site" in page.text:
         print("Alert:-Token Expired!!:Update new token in Payload")
         exit(2)
+    usn_list.insert(len(usn_list), USN)
     if "University Seat Number is not available or Invalid..!" in page.text:
         print("University Seat Number is not available or Invalid..!")
         ia1.insert(len(ia1), "-")
