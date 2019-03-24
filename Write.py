@@ -9,117 +9,73 @@ import xlsxwriter
 
 
 work_book = xlsxwriter.Workbook("Results.xlsx")
-work_sheet_internal = work_book.add_worksheet("Internal Marks")
-work_sheet_external = work_book.add_worksheet("External Marks")
-work_sheet_total = work_book.add_worksheet("Total Marks")
-work_sheet_result = work_book.add_worksheet("Result")
+worksheet=work_book.add_worksheet("Results")
+merge_format = work_book.add_format({
+    'align': 'center'})
 
-
-def write_to_excel_internal(usn, name, ia1, ia2, ia3, ia4, ia5, ia6, ia7, ia8):
-    work_sheet_internal.write(0, 0, "Student USN")
-    work_sheet_internal.write(0, 1, "Student Name")
-    work_sheet_internal.write(0, 2, "Engineering Mathematics IV")
-    work_sheet_internal.write(0, 3, "Software Engineering")
-    work_sheet_internal.write(0, 4, " Design and Analysis of Algorithms")
-    work_sheet_internal.write(0, 5, "Microprocessors and Microcontrollers")
-    work_sheet_internal.write(0, 6, "Object Oriented Programming with JAVA")
-    work_sheet_internal.write(0, 7, "Data Communications")
-    work_sheet_internal.write(0, 8, "Design and Analysis of Algorithms Laboratory")
-    work_sheet_internal.write(0, 9, "Microprocessors Laboratory")
-    student = 0
-    for i in range(1, 218):
-        work_sheet_internal.write(i, 0, usn[student])
-        work_sheet_internal.write(i, 1, name[student])
-        work_sheet_internal.write(i, 2, ia1[student])
-        work_sheet_internal.write(i, 3, ia2[student])
-        work_sheet_internal.write(i, 4, ia3[student])
-        work_sheet_internal.write(i, 5, ia4[student])
-        work_sheet_internal.write(i, 6, ia5[student])
-        work_sheet_internal.write(i, 7, ia6[student])
-        work_sheet_internal.write(i, 8, ia7[student])
-        work_sheet_internal.write(i, 9, ia8[student])
-        student += 1
-    return
-
-
-def write_to_excel_external(usn, name, ea1, ea2, ea3, ea4, ea5, ea6, ea7, ea8):
-    work_sheet_external.write(0, 0, "Student USN")
-    work_sheet_external.write(0, 1, "Student Name")
-    work_sheet_external.write(0, 2, "Engineering Mathematics IV")
-    work_sheet_external.write(0, 3, "Software Engineering")
-    work_sheet_external.write(0, 4, " Design and Analysis of Algorithms")
-    work_sheet_external.write(0, 5, "Microprocessors and Microcontrollers")
-    work_sheet_external.write(0, 6, "Object Oriented Programming with JAVA")
-    work_sheet_external.write(0, 7, "Data Communications")
-    work_sheet_external.write(0, 8, "Design and Analysis of Algorithms Laboratory")
-    work_sheet_external.write(0, 9, "Microprocessors Laboratory")
-    student = 0
-    for row in range(1, 218):
-        work_sheet_external.write(row, 0, usn[student])
-        work_sheet_external.write(row, 1, name[student])
-        work_sheet_external.write(row, 2, ea1[student])
-        work_sheet_external.write(row, 3, ea2[student])
-        work_sheet_external.write(row, 4, ea3[student])
-        work_sheet_external.write(row, 5, ea4[student])
-        work_sheet_external.write(row, 6, ea5[student])
-        work_sheet_external.write(row, 7, ea6[student])
-        work_sheet_external.write(row, 8, ea7[student])
-        work_sheet_external.write(row, 9, ea8[student])
-        student += 1
-    return
-
-
-def write_to_excel_total(usn, name, total1, total2, total3, total4, total5, total6, total7, total8):
-    work_sheet_total.write(0, 0, "Student USN")
-    work_sheet_total.write(0, 1, "Student Name")
-    work_sheet_total.write(0, 2, "Engineering Mathematics IV")
-    work_sheet_total.write(0, 3, "Software Engineering")
-    work_sheet_total.write(0, 4, " Design and Analysis of Algorithms")
-    work_sheet_total.write(0, 5, "Microprocessors and Microcontrollers")
-    work_sheet_total.write(0, 6, "Object Oriented Programming with JAVA")
-    work_sheet_total.write(0, 7, "Data Communications")
-    work_sheet_total.write(0, 8, "Design and Analysis of Algorithms Laboratory")
-    work_sheet_total.write(0, 9, "Microprocessors Laboratory")
-    student = 0
-    for row in range(1, 218):
-        work_sheet_total.write(row, 0, usn[student])
-        work_sheet_total.write(row, 1, name[student])
-        work_sheet_total.write(row, 2, total1[student])
-        work_sheet_total.write(row, 3, total2[student])
-        work_sheet_total.write(row, 4, total3[student])
-        work_sheet_total.write(row, 5, total4[student])
-        work_sheet_total.write(row, 6, total5[student])
-        work_sheet_total.write(row, 7, total6[student])
-        work_sheet_total.write(row, 8, total7[student])
-        work_sheet_total.write(row, 9, total8[student])
-        student += 1
-    return
-
-
-def write_to_excel_result(usn, name, r1, r2, r3, r4, r5, r6, r7, r8):
-    work_sheet_result.write(0, 0, "Student USN")
-    work_sheet_result.write(0, 1, "Student Name")
-    work_sheet_result.write(0, 2, "Engineering Mathematics IV")
-    work_sheet_result.write(0, 3, "Software Engineering")
-    work_sheet_result.write(0, 4, "Design and Analysis of Algorithms")
-    work_sheet_result.write(0, 5, "Microprocessors and Microcontrollers")
-    work_sheet_result.write(0, 6, "Object Oriented Programming with JAVA")
-    work_sheet_result.write(0, 7, "Data Communications")
-    work_sheet_result.write(0, 8, "Design and Analysis of Algorithms Laboratory")
-    work_sheet_result.write(0, 9, "Microprocessors Laboratory")
-    student = 0
-    for row in range(1, 218):
-        work_sheet_result.write(row, 0, usn[student])
-        work_sheet_result.write(row, 1, name[student])
-        work_sheet_result.write(row, 2, r1[student])
-        work_sheet_result.write(row, 3, r2[student])
-        work_sheet_result.write(row, 4, r3[student])
-        work_sheet_result.write(row, 5, r4[student])
-        work_sheet_result.write(row, 6, r5[student])
-        work_sheet_result.write(row, 7, r6[student])
-        work_sheet_result.write(row, 8, r7[student])
-        work_sheet_result.write(row, 9, r8[student])
-        student += 1
+def write_to_excel(usn, name, ia1, ia2, ia3, ia4, ia5, ia6, ia7, ia8, ia9, ea1, ea2, ea3, ea4, ea5, ea6, ea7, ea8, ea9, total1, total2, total3, total4, total5, total6, total7, total8, total9, r1, r2, r3, r4, r5, r6, r7, r8, r9, sgpa):
+    worksheet.write(0, 0, "Student USN")
+    worksheet.write(0, 1, "Student Name")
+    worksheet.merge_range('C1:F1', 'ENGINEERING MATHEMATICS - III', merge_format)
+    worksheet.merge_range('G1:J1', 'ANALOG AND DIGITAL ELECTRONICS', merge_format)
+    worksheet.merge_range('K1:N1', 'DATA STRUCTURES AND APPLICATIONS', merge_format)
+    worksheet.merge_range('O1:R1', 'COMPUTER ORGANIZATION', merge_format)
+    worksheet.merge_range('S1:V1', 'UNIX AND SHELL PROGRAMMING', merge_format)
+    worksheet.merge_range('W1:Z1', ' DISCRETE MATHEMATICAL STRUCTURES', merge_format)
+    worksheet.merge_range('AA1:AD1', 'ANALOG AND DIGITAL ELECTRONICS LABORATORY', merge_format)
+    worksheet.merge_range('AE1:AH1', 'DATA STRUCTURES LABORATORY', merge_format)
+    worksheet.merge_range('AI1:AL1', 'KANNADA', merge_format)
+    worksheet.write('AM1', 'SGPA', merge_format)
+    j = 2
+    for i in range(0, 9):
+        worksheet.write(1, j, "IA")
+        worksheet.write(1, j + 1, "EA")
+        worksheet.write(1, j + 2, "Total")
+        worksheet.write(1, j + 3, "Result")
+        j += 4
+    length = len(ia1)
+    row = 2
+    for i in range(0,length):
+        worksheet.write(row, 0, usn[i])
+        worksheet.write(row, 1, name[i])
+        worksheet.write(row, 2, ia1[i])
+        worksheet.write(row, 3, ea1[i])
+        worksheet.write(row, 4, total1[i])
+        worksheet.write(row, 5, r1[i])
+        worksheet.write(row, 6, ia2[i])
+        worksheet.write(row, 7, ea2[i])
+        worksheet.write(row, 8, total2[i])
+        worksheet.write(row, 9, r2[i])
+        worksheet.write(row, 10, ia3[i])
+        worksheet.write(row, 11, ea3[i])
+        worksheet.write(row, 12, total3[i])
+        worksheet.write(row, 13, r3[i])
+        worksheet.write(row, 14, ia4[i])
+        worksheet.write(row, 15, ea4[i])
+        worksheet.write(row, 16, total4[i])
+        worksheet.write(row, 17, r4[i])
+        worksheet.write(row, 18, ia5[i])
+        worksheet.write(row, 19, ea5[i])
+        worksheet.write(row, 20, total5[i])
+        worksheet.write(row, 21, r5[i])
+        worksheet.write(row, 22, ia6[i])
+        worksheet.write(row, 23, ea6[i])
+        worksheet.write(row, 24, total6[i])
+        worksheet.write(row, 25, r6[i])
+        worksheet.write(row, 26, ia7[i])
+        worksheet.write(row, 27, ea7[i])
+        worksheet.write(row, 28, total7[i])
+        worksheet.write(row, 29, r7[i])
+        worksheet.write(row, 30, ia8[i])
+        worksheet.write(row, 31, ea8[i])
+        worksheet.write(row, 32, total8[i])
+        worksheet.write(row, 33, r8[i])
+        worksheet.write(row, 34, ia9[i])
+        worksheet.write(row, 35, ea9[i])
+        worksheet.write(row, 36, total9[i])
+        worksheet.write(row, 37, r9[i])
+        worksheet.write(row, 38, sgpa[i])
+        row += 1
     return
 
 
