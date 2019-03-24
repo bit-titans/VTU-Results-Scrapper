@@ -130,7 +130,7 @@ while True:
         r8.insert(len(r8), "-")
         r9.insert(len(r9), "-")
         sgpa.insert(len(sgpa), "-")
-        names.insert(len(names), "USN does'nt Exist")
+        names.insert(len(names), "USN doesn't Exist")
         continue
     temp = page.text.find("Student Name")
     name.clear()
