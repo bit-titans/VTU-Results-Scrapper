@@ -75,7 +75,7 @@ while True:
     usn_list.insert(len(usn_list), USN)
     url = "http://results.vtu.ac.in/resultsvitavicbcs_19/resultpage.php"
     payload = {'lns': USN, 'captchacode': str(cap),
-                   'token': 'MFZHM21UVW4rMXRaVSt0Z1g5anU4RDR6c0MySXFoSk9VRzA5RGxrS2VyWmpFbDVHL0ttVGZ0bzFNL3doMTJiN0ZYUGVzeUxleEVJNGcyWjJOMWIwcHc9PTo67mFtRq0w1HHw0KAkwWrHnw',
+                   'token': 'Sk4wTTJ6Y09wd0RVVm8wSVE5a2phUWxUT0VsejEzSFU0SWl1YkxHdi9Kc0pVQ3BrOE5SRUQwVTBVK1k2bGw2ZFdaWG16cW81bGIwaUxudUg4VEdUY3c9PTo6CcA6spgXA7a48DhwljbQLQ',
                    'current_url': 'http://results.vtu.ac.in/resultsvitavicbcs_19/index.php'}
     page = s.post(url, data=payload, headers=headers)
     tree = html.fromstring(page.content)
@@ -138,6 +138,9 @@ while True:
         temp += 1
     names.insert(len(names), ''.join(name))
     if("Semester : 3" in page.text):
+        if "18" in USN:
+            print("Diploma Detected")
+            continue
         imarks1 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div[1]/div/div/div[2]/div/div/div[2]/div/div[2]/div[3]')[0].text
         imarks2 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div[1]/div/div/div[2]/div/div[1]/div[2]/div/div[3]/div[3]')[0].text
         imarks3 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div[1]/div/div/div[2]/div/div[1]/div[2]/div/div[4]/div[3]')[0].text
