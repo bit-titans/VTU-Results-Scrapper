@@ -46,24 +46,25 @@ r8 = []
 i = 1
 name = []
 names = []
-while i <= 217:
+while i <= 199:
     s = requests.Session()
-    headers = {'Referer': 'http://results.vtu.ac.in/vitaviresultcbcs2018/index.php',
+    headers = {'Referer': 'https://results.vtu.ac.in/vitavicbcsjj19/index.php',
                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36',
-                   'Upgrade-Insecure-Requests': '1',  'Cookie': 'PHPSESSID=u47uot7eg9j6eglqm951e3nfr7'
+                   'Upgrade-Insecure-Requests': '1',  'Cookie': 'PHPSESSID=e0e6cf142e7c180354e2d78d0ec2eb63'
             , 'Connection': 'keep-alive'}
-    image = s.get("http://results.vtu.ac.in/vitaviresultcbcs2018/captcha_new.php", headers=headers)
+    image = s.get("https://results.vtu.ac.in/vitavicbcsjj19/captcha_new.php", headers=headers,verify=False)
     with open("snap.png", 'wb') as file:
         file.write(image.content)
     cap = ocr.get_ocr("snap.png")
-    USN = "1BI16CS"+str(format(i, '03d'))
-    url = "http://results.vtu.ac.in/vitaviresultcbcs2018/resultpage.php"
+    USN = "1BI18CS"+str(format(i, '03d'))
+    url = "https://results.vtu.ac.in/vitavicbcsjj19/resultpage.php"
     payload = {'lns': USN, 'captchacode': str(cap),
-                   'token': 'YVY3aVVsT1F0dGNhalpxZFU1c0VuYjdsOER4VlRUay81alRYUUFucmRyekpHVWxaM2owby9PNGJYMlE2elREMUp6UkdOTk1IcXdQTnBVSkh4eFZiMGc9PTo67Sdlq3FpWDAYuCoX3rutjQ==',
-                   'current_url': 'http://results.vtu.ac.in/vitaviresultcbcs2018/index.php'}
-    page = s.post(url, data=payload, headers=headers)
+                   'token': 'YUFMMlhUOVNLUE1RV09Wa1d5ZUh0bU93dUNqSDZmQzlnK3RXVUVnbWt6MjVQWG4xZlZtZ2FFNFdMZGh0MHQvV1pOR0kxMnRtTzc2bk1KczhhcUFLOUE9PTo6qSjR4GNZb1EArB/rUbCE+Q==',
+                   'current_url': 'https://results.vtu.ac.in/vitavicbcsjj19/index.php'}
+    page = s.post(url, data=payload, headers=headers,verify=False)
+    print(page)
     tree = html.fromstring(page.content)
-    print("Sent USN:-1BI16CS"+str(format(i, '03d')))
+    print("Sent USN:-1BI18CS"+str(format(i, '03d')))
     print("Sent Captcha:"+ocr.get_ocr("snap.png"))
     if "Invalid captcha code !!!" in page.text:
         print("Invalid captcha code !!!")
@@ -110,44 +111,49 @@ while i <= 217:
         names.insert(len(names), "USN does'nt Exist")
         continue
     temp = page.text.find("Student Name")
+    # print(page.text)
+    # print(page.text[temp])
     name.clear()
-    while (page.text[temp + 91] != "<"):
-        name.insert(len(name), page.text[temp + 91])
+
+    while (page.text[temp + 82] != "<"):
+        name.insert(len(name), page.text[temp + 82])
         temp += 1
+    # print(name)
+    # exit(3)
     names.insert(len(names), ''.join(name))
-    if("Semester : 4" in page.text):
-        imarks1 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div[1]/div/div/div[2]/div/div/div[2]/div/div[2]/div[3]')[0].text
-        imarks2 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div[1]/div/div/div[2]/div/div[1]/div[2]/div/div[3]/div[3]')[0].text
-        imarks3 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div[1]/div/div/div[2]/div/div[1]/div[2]/div/div[4]/div[3]')[0].text
-        imarks4 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div[1]/div/div/div[2]/div/div[1]/div[2]/div/div[5]/div[3]')[0].text
-        imarks5 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div[1]/div/div/div[2]/div/div[1]/div[2]/div/div[6]/div[3]')[0].text
-        imarks6 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div[1]/div/div/div[2]/div/div[1]/div[2]/div/div[7]/div[3]')[0].text
-        imarks7 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div[1]/div/div/div[2]/div/div[1]/div[2]/div/div[8]/div[3]')[0].text
-        imarks8 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div[1]/div/div/div[2]/div/div[1]/div[2]/div/div[9]/div[3]')[0].text
-        emarks1 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div[1]/div/div/div[2]/div/div[1]/div[2]/div/div[2]/div[4]')[0].text
-        emarks2 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div[1]/div/div/div[2]/div/div[1]/div[2]/div/div[3]/div[4]')[0].text
-        emarks3 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div[1]/div/div/div[2]/div/div[1]/div[2]/div/div[4]/div[4]')[0].text
-        emarks4 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div[1]/div/div/div[2]/div/div[1]/div[2]/div/div[5]/div[4]')[0].text
-        emarks5 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div[1]/div/div/div[2]/div/div[1]/div[2]/div/div[6]/div[4]')[0].text
-        emarks6 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div[1]/div/div/div[2]/div/div[1]/div[2]/div/div[7]/div[4]')[0].text
-        emarks7 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div[1]/div/div/div[2]/div/div[1]/div[2]/div/div[8]/div[4]')[0].text
-        emarks8 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div[1]/div/div/div[2]/div/div[1]/div[2]/div/div[9]/div[4]')[0].text
-        tmarks1 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div[1]/div/div/div[2]/div/div[1]/div[2]/div/div[2]/div[5]')[0].text
-        tmarks2 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div[1]/div/div/div[2]/div/div[1]/div[2]/div/div[3]/div[5]')[0].text
-        tmarks3 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div[1]/div/div/div[2]/div/div[1]/div[2]/div/div[4]/div[5]')[0].text
-        tmarks4 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div[1]/div/div/div[2]/div/div[1]/div[2]/div/div[5]/div[5]')[0].text
-        tmarks5 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div[1]/div/div/div[2]/div/div[1]/div[2]/div/div[6]/div[5]')[0].text
-        tmarks6 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div[1]/div/div/div[2]/div/div[1]/div[2]/div/div[7]/div[5]')[0].text
-        tmarks7 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div[1]/div/div/div[2]/div/div[1]/div[2]/div/div[8]/div[5]')[0].text
-        tmarks8 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div[1]/div/div/div[2]/div/div[1]/div[2]/div/div[9]/div[5]')[0].text
-        result1 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div[1]/div/div/div[2]/div/div[1]/div[2]/div/div[2]/div[6]')[0].text
-        result2 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div[1]/div/div/div[2]/div/div[1]/div[2]/div/div[3]/div[6]')[0].text
-        result3 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div[1]/div/div/div[2]/div/div[1]/div[2]/div/div[4]/div[6]')[0].text
-        result4 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div[1]/div/div/div[2]/div/div[1]/div[2]/div/div[5]/div[6]')[0].text
-        result5 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div[1]/div/div/div[2]/div/div[1]/div[2]/div/div[6]/div[6]')[0].text
-        result6 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div[1]/div/div/div[2]/div/div[1]/div[2]/div/div[7]/div[6]')[0].text
-        result7 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div[1]/div/div/div[2]/div/div[1]/div[2]/div/div[8]/div[6]')[0].text
-        result8 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div[1]/div/div/div[2]/div/div[1]/div[2]/div/div[9]/div[6]')[0].text
+    if("Semester : 2" in page.text):
+        imarks1 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div/div/div/div[2]/div/div/div[2]/div/div[2]/div[3]')[0].text
+        imarks2 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div/div/div/div[2]/div/div/div[2]/div/div[3]/div[3]')[0].text
+        imarks3 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div/div/div/div[2]/div/div/div[2]/div/div[4]/div[3]')[0].text
+        imarks4 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div/div/div/div[2]/div/div/div[2]/div/div[5]/div[3]')[0].text
+        imarks5 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div/div/div/div[2]/div/div/div[2]/div/div[6]/div[3]')[0].text
+        imarks6 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div/div/div/div[2]/div/div/div[2]/div/div[7]/div[3]')[0].text
+        imarks7 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div/div/div/div[2]/div/div/div[2]/div/div[8]/div[3]')[0].text
+        imarks8 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div/div/div/div[2]/div/div/div[2]/div/div[9]/div[3]')[0].text
+        emarks1 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div/div/div/div[2]/div/div/div[2]/div/div[2]/div[4]')[0].text
+        emarks2 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div/div/div/div[2]/div/div/div[2]/div/div[3]/div[4]')[0].text
+        emarks3 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div/div/div/div[2]/div/div/div[2]/div/div[4]/div[4]')[0].text
+        emarks4 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div/div/div/div[2]/div/div/div[2]/div/div[5]/div[4]')[0].text
+        emarks5 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div/div/div/div[2]/div/div/div[2]/div/div[6]/div[4]')[0].text
+        emarks6 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div/div/div/div[2]/div/div/div[2]/div/div[7]/div[4]')[0].text
+        emarks7 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div/div/div/div[2]/div/div/div[2]/div/div[8]/div[4]')[0].text
+        emarks8 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div/div/div/div[2]/div/div/div[2]/div/div[9]/div[4]')[0].text
+        tmarks1 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div/div/div/div[2]/div/div/div[2]/div/div[2]/div[5]')[0].text
+        tmarks2 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div/div/div/div[2]/div/div/div[2]/div/div[3]/div[5]')[0].text
+        tmarks3 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div/div/div/div[2]/div/div/div[2]/div/div[4]/div[5]')[0].text
+        tmarks4 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div/div/div/div[2]/div/div/div[2]/div/div[5]/div[5]')[0].text
+        tmarks5 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div/div/div/div[2]/div/div/div[2]/div/div[6]/div[5]')[0].text
+        tmarks6 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div/div/div/div[2]/div/div/div[2]/div/div[7]/div[5]')[0].text
+        tmarks7 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div/div/div/div[2]/div/div/div[2]/div/div[8]/div[5]')[0].text
+        tmarks8 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div/div/div/div[2]/div/div/div[2]/div/div[9]/div[5]')[0].text
+        result1 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div/div/div/div[2]/div/div/div[2]/div/div[2]/div[6]')[0].text
+        result2 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div/div/div/div[2]/div/div/div[2]/div/div[3]/div[6]')[0].text
+        result3 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div/div/div/div[2]/div/div/div[2]/div/div[4]/div[6]')[0].text
+        result4 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div/div/div/div[2]/div/div/div[2]/div/div[5]/div[6]')[0].text
+        result5 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div/div/div/div[2]/div/div/div[2]/div/div[6]/div[6]')[0].text
+        result6 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div/div/div/div[2]/div/div/div[2]/div/div[7]/div[6]')[0].text
+        result7 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div/div/div/div[2]/div/div/div[2]/div/div[8]/div[6]')[0].text
+        result8 = tree.xpath('//*[@id="dataPrint"]/div[2]/div/div/div[2]/div/div/div/div[2]/div/div/div[2]/div/div[9]/div[6]')[0].text
         ia1.insert(len(ia1), imarks1)
         ia2.insert(len(ia2), imarks2)
         ia3.insert(len(ia3), imarks3)
@@ -214,18 +220,23 @@ while i <= 217:
         r7.insert(len(r7), "-")
         r8.insert(len(r8), "-")
 for i in range(1, 218):
-    usn_list.insert(len(usn_list), "1BI16CS"+str(format(i, '03d')))
+    usn_list.insert(len(usn_list), "1BI18CS"+str(format(i, '03d')))
 done = 0
+print(ia1)
+print(ea1)
+print(t1)
+print(usn_list)
+print(names)
 while done==0 :
+
     print("WRITE:-")
     print("Menu:-\n 1)Write to Spreadsheet\n 2)Write to Database\n 3)Both\n 4)Exit")
     choice = int(input("Enter your choice:-"))
     if choice == 1:
-            Write.write_to_excel_internal(usn_list, names, ia1, ia2, ia3, ia4, ia5, ia6, ia7, ia8)
-            Write.write_to_excel_external(usn_list, names, ea1, ea2, ea3, ea4, ea5, ea6, ea7, ea8)
-            Write.write_to_excel_total(usn_list,names, t1, t2, t3, t4, t5, t6, t7, t8)
-            Write.write_to_excel_result(usn_list,names, r1, r2, r3, r4, r5, r6, r7, r8)
-            print("Write Finished")
+        Write.write_to_excel(usn_list, names, ia1, ia2, ia3, ia4, ia5, ia6, ia7, ia8,  ea1, ea2, ea3, ea4, ea5, ea6,
+                             ea7, ea8,  t1, t2, t3, t4, t5, t6, t7, t8,  r1, r2, r3, r4, r5, r6, r7, r8
+                             )
+        print("Write Finished")
     elif choice == 2:
         try:
             WriteDB.drop_tables()
@@ -238,10 +249,9 @@ while done==0 :
         WriteDB.write_results(usn_list, names, r1, r2, r3, r4, r5, r6, r7, r8)
         print("Write Finished")
     elif choice == 3:
-        Write.write_to_excel_internal(usn_list, names, ia1, ia2, ia3, ia4, ia5, ia6, ia7, ia8)
-        Write.write_to_excel_external(usn_list, names, ea1, ea2, ea3, ea4, ea5, ea6, ea7, ea8)
-        Write.write_to_excel_total(usn_list, names, t1, t2, t3, t4, t5, t6, t7, t8)
-        Write.write_to_excel_result(usn_list, names, r1, r2, r3, r4, r5, r6, r7, r8)
+        Write.write_to_excel(usn_list, names, ia1, ia2, ia3, ia4, ia5, ia6, ia7, ia8, ea1, ea2, ea3, ea4, ea5, ea6,
+                             ea7, ea8, t1, t2, t3, t4, t5, t6, t7, t8, r1, r2, r3, r4, r5, r6, r7, r8
+                             )
         try:
             WriteDB.drop_tables()
         except:
