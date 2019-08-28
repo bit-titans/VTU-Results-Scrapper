@@ -16,15 +16,15 @@ merge_format = work_book.add_format({
 def write_to_excel(usn, name, ia1, ia2, ia3, ia4, ia5, ia6, ia7, ia8, ia9, ea1, ea2, ea3, ea4, ea5, ea6, ea7, ea8, ea9, total1, total2, total3, total4, total5, total6, total7, total8, total9, r1, r2, r3, r4, r5, r6, r7, r8, r9, sgpa):
     worksheet.write(0, 0, "Student USN")
     worksheet.write(0, 1, "Student Name")
-    worksheet.merge_range('C1:F1', 'ENGINEERING MATHEMATICS - III', merge_format)
-    worksheet.merge_range('G1:J1', 'ANALOG AND DIGITAL ELECTRONICS', merge_format)
-    worksheet.merge_range('K1:N1', 'DATA STRUCTURES AND APPLICATIONS', merge_format)
-    worksheet.merge_range('O1:R1', 'COMPUTER ORGANIZATION', merge_format)
-    worksheet.merge_range('S1:V1', 'UNIX AND SHELL PROGRAMMING', merge_format)
-    worksheet.merge_range('W1:Z1', ' DISCRETE MATHEMATICAL STRUCTURES', merge_format)
-    worksheet.merge_range('AA1:AD1', 'ANALOG AND DIGITAL ELECTRONICS LABORATORY', merge_format)
-    worksheet.merge_range('AE1:AH1', 'DATA STRUCTURES LABORATORY', merge_format)
-    worksheet.merge_range('AI1:AL1', 'KANNADA', merge_format)
+    worksheet.merge_range('C1:F1', 'ENGINEERING MATHEMATICS - IV', merge_format)
+    worksheet.merge_range('G1:J1', 'OBJECT ORIENTED CONCEPTS', merge_format)
+    worksheet.merge_range('K1:N1', 'DESIGN AND ANALYSIS OF ALGORITHMS', merge_format)
+    worksheet.merge_range('O1:R1', 'MICROPROCESSORS AND MICROCONTROLLERS', merge_format)
+    worksheet.merge_range('S1:V1', 'SOFTWARE ENGINEERING', merge_format)
+    worksheet.merge_range('W1:Z1', ' DATA COMMUNICATION', merge_format)
+    worksheet.merge_range('AA1:AD1', ' DESIGN AND ANALYSIS OF ALGORITHMS LABORATORY', merge_format)
+    worksheet.merge_range('AE1:AH1', 'MICROPROCESSORS LABORATORY', merge_format)
+    worksheet.merge_range('AI1:AL1', 'CONSTITUTION OF INDIA,PROFFESIONAL ETHICS AND HUMAN RIGHTS', merge_format)
     worksheet.write('AM1', 'SGPA', merge_format)
     j = 2
     for i in range(0, 9):
@@ -34,7 +34,7 @@ def write_to_excel(usn, name, ia1, ia2, ia3, ia4, ia5, ia6, ia7, ia8, ia9, ea1, 
         worksheet.write(1, j + 3, "Result")
         j += 4
     length = len(ia1)
-    row = 2
+    row = 221
     for i in range(0,length):
         worksheet.write(row, 0, usn[i])
         worksheet.write(row, 1, name[i])
