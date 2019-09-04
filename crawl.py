@@ -88,7 +88,23 @@ while True:
         exit(2)
     if "University Seat Number is not available or Invalid..!" in page.text:
         print("University Seat Number is not available or Invalid..!")
-        # exit(-1)
+        iresult = {
+            "USN": USN,
+            "Name": "USN doesnt exist ",
+            "15CS61": ["-", "-", "-", "-"],
+            "15CS62": ["-", "-", "-", "-"],
+            "15CS63": ["-", "-", "-", "-"],
+            "15CS64": ["-", "-", "-", "-"],
+            "15CSL67": ["-", "-", "-", "-"],
+            "15CSL68": ["-", "-", "-", "-"],
+            "15CS651": ["-", "-", "-", "-"],
+            "15CS653": ["-", "-", "-", "-"],
+            "15CS664": ["-", "-", "-", "-"],
+            "15IM663": ["-", "-", "-", "-"],
+            "15MAT661": ["-", "-", "-", "-"],
+        }
+        result.insert(len(result),iresult)
+
     temp = page.text.find("Student Name")
     name.clear()
     while (page.text[temp + 82] != "<"):
@@ -165,7 +181,24 @@ while True:
         iresult[sub8] = [imarks8, emarks8, tmarks8, result8]
         result.insert(len(result), iresult)
     else:
-        continue
+        print("University Seat Number is not available or Invalid..!")
+        iresult = {
+            "USN": USN,
+            "Name": "USN doesnt exist ",
+            "15CS61": ["-", "-", "-", "-"],
+            "15CS62": ["-", "-", "-", "-"],
+            "15CS63": ["-", "-", "-", "-"],
+            "15CS64": ["-", "-", "-", "-"],
+            "15CSL67": ["-", "-", "-", "-"],
+            "15CSL68": ["-", "-", "-", "-"],
+            "15CS651": ["-", "-", "-", "-"],
+            "15CS653": ["-", "-", "-", "-"],
+            "15CS664": ["-", "-", "-", "-"],
+            "15IM663": ["-", "-", "-", "-"],
+            "15MAT661": ["-", "-", "-", "-"],
+        }
+        result.insert(len(result), iresult)
+
 done = 0
 while done == 0:
     print("WRITE:-")
