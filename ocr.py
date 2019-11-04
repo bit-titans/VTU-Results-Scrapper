@@ -11,7 +11,7 @@ from PIL import Image, ImageEnhance, ImageColor
 
 
 def get_ocr(src):
-    pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files (x86)\Tesseract-OCR\tesseract.exe" # Specify path to tesseract.exe from Tessaract installation
+    # pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files (x86)\Tesseract-OCR\tesseract.exe" # Specify path to tesseract.exe from Tessaract installation
     image = Image.open(src)
     # image.show()
     (left, upper, right, lower) = (52,9,150,29)
